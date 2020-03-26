@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+	<head>
+		<title>dynamic</title>
+		<style>
+			*{
+				box-sizing:border-box;
+			}
+			.container{
+				max-width:800px;
+				margin:0 auto;
+			}
+			#celebs{
+				display:flex;
+				flex-wrap:wrap;
+			}
+			.celebrity{
+				border:1px solid #ddd;
+				border-radius:5px;
+				padding:20px;
+				width:25%;
+			}
+			
+		</style>
+	</head>
+	<body>
+
+		<div class="container">
+			<h1>Celebrity Lookup</h1>
+			<input type="text" name="search" id="search">
+			<div id="celebs">
+<!--
+				<div class="celebrity">
+					<h2>Jay-Z</h2>
+					<p>Rap</p>
+				</div>
+-->
+			</div>
+		</div>
+		<script>
+			c = [
+				{
+					name:"jay-z",
+					genre:"rap"
+				},
+				{
+					name:"nas",
+					genre:"rap"
+				},
+				{
+					name:"beatles",
+					genre:"rock"
+				},
+				{
+					name:"aerosmith",
+					genre:"rock"
+				},
+				{
+					name:"michael jackson",
+					genre:"pop"
+				},
+				{
+					name:"madonna",
+					genre:"pop"
+				}
+			];
+			
+			for( x in c ){
+				document.getElementById('celebs').innerHTML += `
+					<div class="celebrity">
+						<h2>${ c[x].name }</h2>
+						<p>${ c[x].genre }</p>
+					</div>
+				`;
+			};
+			
+			document.getElementById('search').onkeyup = function(){
+				a = this.value;
+				console.log(a);
+				b = document.getElementsByClassName('celebrity');
+				
+				for( i = 0; i < b.length; i++ ){
+					
+					if( b[i].innerHTML.indexOf(a) > -1 ){
+						
+						b[i].style.display = "block";
+						
+					} else {
+						
+						b[i].style.display = "none";
+						
+					};
+				};
+			};
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
